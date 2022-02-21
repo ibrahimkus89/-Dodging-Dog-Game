@@ -23,6 +23,12 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag=="Player")
+        {
+            Destroy(collision.gameObject);
+            GameManager.instance.GameOver();
+        }
+
         if (collision.gameObject.tag =="Ground")
         {
             Destroy(gameObject);
