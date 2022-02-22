@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     int score = 0;
 
     public Text scoreText;
+    public GameObject gameOverPanel;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         GameObject.Find("ObstacleSpawner").GetComponent<ObstacleSpawner>().StopSpawning();
 
+        gameOverPanel.SetActive(true);
+
     }
 
     public void IncrementScore()
@@ -31,7 +35,18 @@ public class GameManager : MonoBehaviour
         {
             score++;
             scoreText.text = score.ToString();
-            print(score);
+            
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
+
     }
 }
