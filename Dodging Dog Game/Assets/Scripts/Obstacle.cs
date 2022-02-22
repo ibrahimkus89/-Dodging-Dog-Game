@@ -31,6 +31,7 @@ public class Obstacle : MonoBehaviour
 
         if (collision.gameObject.tag =="Ground")
         {
+            GameManager.instance.IncrementScore();
             Destroy(gameObject);
         }
     }
